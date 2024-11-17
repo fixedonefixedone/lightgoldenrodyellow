@@ -1,1 +1,6 @@
-
+forumbox {
+  width: 300px;
+  border: 5px lightgoldenrodyellow;
+  padding: 50px;
+  margin: 20px;
+}
