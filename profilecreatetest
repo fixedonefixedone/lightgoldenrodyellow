@@ -1,0 +1,39 @@
+<html>
+    <title>lightgoldenrodyellow</title>
+    <link rel="icon" type="image/x-icon" href="https://fixedonefixedone.github.io/lightgoldenrodyellow/lgrylogo.jpg">
+
+    <body style="background-color: black; color: lightgoldenrodyellow; font-family: verdana">
+
+        <header style="background-color: lightgoldenrodyellow; color: black; display: flex; align-items: center">
+            <img src="https://fixedonefixedone.github.io/lightgoldenrodyellow/lgrylogoinvert.jpg" width="50" height="50">
+            <span style="margin-left: 10px;">lightgoldenrodyellow</span>
+        </header>
+
+        <main>
+            <br>
+            <br>
+
+            <h1>Create a Profile</h1>
+            <h3>Customize</h3>
+          
+            <p>Select a Profile Picture:</p> 
+            <input type="file"></input>
+      
+            <p>Choose a Username:</p>
+            <input type="text" placeholder="ilovelightgoldenrodyellow" style="background-color: lightgoldenrodyellow; color: black; font-family: verdana; outline: none;">
+          
+            <p>Choose a Password:</p>
+            <input type="text" placeholder="qwerty" style="background-color: lightgoldenrodyellow; color: black; font-family: verdana; outline: none;">
+            <br>
+            <br>
+            
+
+        </main>
+
+        <footer style="background-color: lightgoldenrodyellow; color: black; display: flex; align-items: center">
+            <img src="https://fixedonefixedone.github.io/lightgoldenrodyellow/lgrylogoinvert.jpg" width="50" height="50">
+            <span style="margin-left: 10px;">sorry for not putting any more stuff 3:</span>
+        </footer>
+
+    </body>
+</html>
