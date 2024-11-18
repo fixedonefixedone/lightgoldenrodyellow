@@ -1,6 +1,6 @@
 .outerforumbox {
   width: 600px;
-  border: 5px dashed lightgoldenrodyellow; /* Added 'solid' to specify the border style */
+  border: 5px dashed lightgoldenrodyellow;
   padding: 10;
   margin: 20px;
 }
