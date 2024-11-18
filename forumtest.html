@@ -1,46 +1,112 @@
-<html>
-    <title>lightgoldenrodyellow</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lightgoldenrodyellow</title>
     <link rel="icon" type="image/x-icon" href="https://fixedonefixedone.github.io/lightgoldenrodyellow/lgrylogo.jpg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: black; color: lightgoldenrodyellow; font-family: verdana">
+    <header style="background-color: lightgoldenrodyellow; color: black; display: flex; align-items: center; padding: 10px;">
+        <img src="https://fixedonefixedone.github.io/lightgoldenrodyellow/lgrylogoinvert.jpg" width="50" height="50" alt="Logo">
+        <span style="margin-left: 10px;">lightgoldenrodyellow</span>
+    </header>
+<main>
+    <br>
+    <br>
+    <h1><i>Lightgoldenrodyellow</i></h1>
+    <p><i>Lightgoldenrodyellow</i> is a forum where you can talk about anything.</p>
+    <p>By the way, you can create a topic just by filling out the form below!</p>
 
-    <body style="background-color: black; color: lightgoldenrodyellow; font-family: verdana">
-
-        <header style="background-color: lightgoldenrodyellow; color: black; display: flex; align-items: center">
-            <img src="https://fixedonefixedone.github.io/lightgoldenrodyellow/lgrylogoinvert.jpg" width="50" height="50">
-            <span style="margin-left: 10px;">lightgoldenrodyellow</span>
-        </header>
-
-        <main>
-            <h1><i>Lightgoldenrodyellow</i></h1>
-
-            <p><i>Lightgoldenrodyellow</i> is a forum where you can talk about absolutely anything.</p>
-          
-            <p>By the way, you create a Topic just by pressing the "Create" button!</p>
-          
-            <input type="text" placeholder="Anything" style="background-color: lightgoldenrodyellow; color: black; font-family: verdana; outline: none;">
-            <button style="background-color: lightgoldenrodyellow; color: black; font-family: verdana; outline: none;">Create</button>
-            
+        <!-- Topic Creation Form -->
+        <div>
+            <textarea id="topicTitle" placeholder="Topic Title" rows="1" style="background-color: lightgoldenrodyellow; color: black; font-family: verdana; outline: none;"></textarea>
+            <textarea id="topicDescription" placeholder="Enter Description" rows="1" style="background-color: lightgoldenrodyellow; color: black; font-family: verdana; outline: none;"></textarea>
+            <select id="topicTheme" style="background-color: lightgoldenrodyellow; color: black; font-family: verdana;">
+                <option value="General">General</option>
+                <option value="Question">Question</option>
+                <option value="Testing">Testing</option>
+                <option value="Help">Help</option>
+            </select>
+            <button id="createButton" style="background-color: lightgoldenrodyellow; color: black; font-family: verdana; outline: none;">Create</button>
+        </div>
+        <br>
+        <br>
+        <div class="outerforumbox" style="height: 500px; width: 620px; overflow: auto;">
             <br>
-            <br>
-          
-            <div class="outerforumbox">
-              <input type="text" placeholder="Search for Topics" style="background-color: lightgoldenrodyellow; color: black; font-family: verdana; outline: none;">
-            <button style="background-color: lightgoldenrodyellow; color: black; font-family: verdana; outline: none;">Search</button>
-              <div class="forumbox">
-                <p>Status: Closed</p>
-                <h2>How do I say "Hello, World!"" in Brainfuck?</h2>
-                <p>Help! I really need to say "Hello, World!" in Brainfuck!</p>
-              </div>
+            <div>
+                <center>
+                    <input type="text" id="searchBar" placeholder="Search for Topics" style="background-color: lightgoldenrodyellow; color: black; font-family: verdana; outline: none;" onkeyup="searchTopics()">
+                    <button style="background-color: lightgoldenrodyellow; color: black; font-family: verdana; outline: none;">Search</button>
+                </center>
             </div>
-          
-            <br>
-            <br>
+            <div id="topicList" style="display: flex; flex-direction: column; align-items: stretch;"></div>
+        </div>
+        <br>
+        <br>
+    </main>
 
-        </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTopics();
+        } );
 
-        <footer style="background-color: lightgoldenrodyellow; color: black; display: flex; align-items: center">
-            <img src="https://fixedonefixedone.github.io/lightgoldenrodyellow/lgrylogoinvert.jpg" width="50" height="50">
-            <span style="margin-left: 10px;">lightgoldenrodyellow</span>
-        </footer>
+        function loadTopics() {
+            const topics = JSON.parse(localStorage.getItem('topics')) || [];
+            topics.forEach(topic => {
+            addTopicToDOM(topic.title, topic.description, topic.theme);
+            } );
+    }
 
-    </body>
+    function addTopicToDOM(title, description, theme) {
+            const newTopic = document.createElement('div');
+            newTopic.className = 'forumbox';
+            newTopic.setAttribute('data-title', title);
+            newTopic.style.margin = '10px 0';
+            newTopic.style.width = '100%'; 
+            newTopic.style.boxSizing = 'border-box';
+            newTopic.innerHTML = `<p>Theme: ${theme}</p>
+                        <p>Status: Open</p>
+                        <h2>${title}</h2>
+                        <p>${description}</p>
+                        <button style="background-color: lightgoldenrodyellow; color: black; font-family: verdana; outline: none;">Reply</button>`;
+            document.getElementById('topicList').appendChild(newTopic);
+    }
+
+    function searchTopics() {
+            const query = document.getElementById('searchBar').value.toLowerCase();
+            const forumboxes = document.getElementsByClassName('forumbox');
+
+            for (let i = 0; i < forumboxes.length; i++) {
+                const title = forumboxes[i].getAttribute('data-title').toLowerCase();
+                if (title.includes(query)) {
+                    forumboxes[i].style.display = 'block'; 
+                } else {
+                    forumboxes[i].style.display = 'none';
+                }
+            }
+        }
+
+    document.getElementById('createButton').onclick = function() {
+            const title = document.getElementById('topicTitle').value;
+            const description = document.getElementById('topicDescription').value;
+            const theme = document.getElementById('topicTheme').value;
+
+            if (!title || !description) {
+                alert("Please fill out all fields!");
+                return;
+            }
+
+            const newTopic = { title, description, theme };
+            const topics = JSON.parse(localStorage.getItem('topics')) || [];
+            topics.push(newTopic);
+            localStorage.setItem('topics', JSON.stringify(topics));
+            addTopicToDOM(title, description, theme);
+            // Clear input fields after creation
+            document.getElementById('topicTitle').value = '';
+            document.getElementById('topicDescription').value = '';
+        }
+</script>
+</body>
 </html>
