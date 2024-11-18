@@ -1,13 +1,14 @@
 .outerforumbox {
   width: 600px;
   border: 5px dashed lightgoldenrodyellow; /* Added 'solid' to specify the border style */
-  padding: 50px;
+  padding: 10;
   margin: 20px;
 }
 
 .forumbox {
-  width: 440px;
-  border: 3px dotted lightgoldenrodyellow; /* Added 'solid' to specify the border style */
-  padding: 50px;
-  margin: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
 }
