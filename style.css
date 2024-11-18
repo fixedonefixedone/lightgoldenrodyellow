@@ -1,11 +1,11 @@
-.outerforumbox {
+outerforumbox {
   width: 600px;
   border: 5px dashed lightgoldenrodyellow;
   padding: 10;
   margin: 20px;
 }
 
-.forumbox {
+forumbox {
     width: 100%;
     box-sizing: border-box;
     margin: 10px 0;
